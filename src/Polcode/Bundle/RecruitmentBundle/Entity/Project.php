@@ -35,6 +35,10 @@ class Project
      */
     private $isInternal;
 
+    /**
+     * @var AM
+     */
+    private $am;
 
     /**
      * @var ArrayCollection|Employee[]
@@ -163,6 +167,24 @@ class Project
     public function setEmployees(ArrayCollection $employees)
     {
         $this->employees = $employees;
+        return $this;
+    }
+
+    /**
+     * @return AM
+     */
+    public function getAm()
+    {
+        return $this->am;
+    }
+
+    /**
+     * @param AM $am
+     * @return $this
+     */
+    public function setAm(AM $am)
+    {
+        $this->am = $am;
         return $this;
     }
 

@@ -9,5 +9,6 @@
         <field name="lastName" type="string" column="lastName" length="255"/>
         <field name="email" type="string" column="email" length="255"/>
         <one-to-many target-entity="Polcode\Bundle\RecruitmentBundle\Entity\Employee" mapped-by="am" field="employees"/>
+        <one-to-many target-entity="Polcode\Bundle\RecruitmentBundle\Entity\Project" mapped-by="am" field="projects"/>
     </entity>
 </doctrine-mapping>

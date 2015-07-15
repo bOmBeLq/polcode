@@ -31,6 +31,11 @@ class AM
     private $email;
 
     /**
+     * @var ArrayCollection|Project[]
+     */
+    private $projects;
+
+    /**
      * @var ArrayCollection|Employee[]
      */
     private $employees;
@@ -38,6 +43,7 @@ class AM
     public function __construct()
     {
         $this->employees = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
 
@@ -138,10 +144,27 @@ class AM
         return $this;
     }
 
-    function __toString()
+    /**
+     * @return ArrayCollection|Project[]
+     */
+    public function getProjects()
     {
-       return $this->getFirstName().' '.$this->getLastName().' ('.$this->getEmail().')';
+        return $this->projects;
+    }
+
+    /**
+     * @param ArrayCollection|Project[] $projects
+     * @return $this
+     */
+    public function setProjects(ArrayCollection $projects)
+    {
+        $this->projects = $projects;
+        return $this;
     }
 
 
+    public function __toString()
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName() . ' (' . $this->getEmail() . ')';
+    }
 }

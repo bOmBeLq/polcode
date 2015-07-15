@@ -10,6 +10,7 @@
         <field name="endAt" type="datetime" column="endAt" nullable="true"/>
         <field name="isInternal" type="boolean" column="is_internal"/>
         <one-to-many target-entity="Polcode\Bundle\RecruitmentBundle\Entity\Employee" mapped-by="project" field="employees"/>
+        <many-to-one target-entity="Polcode\Bundle\RecruitmentBundle\Entity\AM" inversed-by="projects" field="am"/>
 
     </entity>
 </doctrine-mapping>
