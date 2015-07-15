@@ -165,4 +165,9 @@ class Project
         $this->employees = $employees;
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getName().' ('.$this->getId().')';
+    }
 }

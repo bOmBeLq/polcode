@@ -2,6 +2,7 @@
 
 namespace Polcode\Bundle\RecruitmentBundle\Admin;
 
+use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -21,7 +22,8 @@ class EmployeeAdmin extends Admin
         $datagridMapper
             ->add('firstName')
             ->add('lastName')
-            ->add('email');
+            ->add('email')
+            ->add('project');
     }
 
     /**
@@ -34,6 +36,7 @@ class EmployeeAdmin extends Admin
             ->add('lastName')
             ->add('email')
             ->add('am')
+            ->add('project')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -52,7 +55,10 @@ class EmployeeAdmin extends Admin
             ->add('firstName')
             ->add('lastName')
             ->add('email')
-            ->add('am');
+            ->add('am')
+            ->add('project', null, ['required' => true, 'query_builder' => function (EntityRepository $repo) {
+                return $repo->createQueryBuilder('p')->orderBy('p.isInternal', 'desc'); // just making sure internal project is first on list
+            }]);
     }
 
     /**
@@ -73,8 +79,7 @@ class EmployeeAdmin extends Admin
             ->with('firstName')->addConstraint(new NotBlank())->end()
             ->with('lastName')->addConstraint(new NotBlank())->end()
             ->with('email')->addConstraint(new NotBlank())->addConstraint(new Email())->end()
-            ->with('am')->addConstraint(new NotBlank());
+            ->with('am')->addConstraint(new NotBlank())->end()
+            ->with('project')->addConstraint(new NotBlank())->end();
     }
-
-
 }
