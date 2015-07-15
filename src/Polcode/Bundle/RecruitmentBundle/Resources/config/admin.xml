@@ -21,6 +21,9 @@
             <call method="setTranslationDomain">
                 <argument>PolcodeRecruitmentBundle</argument>
             </call>
+            <call method="setRepositories">
+                <argument type="service" id="doctrine.orm.default_entity_manager" />
+            </call>
         </service>
         <service id="polcode.recruitment.admin.am" class="%polcode.recruitment.admin.am.class%">
             <tag name="sonata.admin" manager_type="orm" group="polcode_recruitment" label="Account Managers" label_catalogue="PolcodeRecruitmentBundle" label_translator_strategy="sonata.admin.label.strategy.underscore" />

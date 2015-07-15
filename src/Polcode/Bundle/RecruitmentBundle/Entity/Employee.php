@@ -2,6 +2,7 @@
 
 namespace Polcode\Bundle\RecruitmentBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,9 +36,14 @@ class Employee
     private $am;
 
     /**
-     * @var Project
+     * @var Project[]|ArrayCollection
      */
-    private $project;
+    private $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
 
 
     /**
@@ -138,20 +144,20 @@ class Employee
     }
 
     /**
-     * @return Project
+     * @return ArrayCollection|Project[]
      */
-    public function getProject()
+    public function getProjects()
     {
-        return $this->project;
+        return $this->projects;
     }
 
     /**
-     * @param Project $project
+     * @param ArrayCollection|Project[] $projects
      * @return $this
      */
-    public function setProject(Project $project)
+    public function setProjects(ArrayCollection $projects)
     {
-        $this->project = $project;
+        $this->projects = $projects;
         return $this;
     }
 }
