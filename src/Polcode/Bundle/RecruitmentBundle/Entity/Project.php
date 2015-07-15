@@ -2,6 +2,7 @@
 
 namespace Polcode\Bundle\RecruitmentBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,9 +37,19 @@ class Project
 
 
     /**
+     * @var ArrayCollection|Employee[]
+     */
+    private $employees;
+
+    public function __construct()
+    {
+        $this->employees = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -61,7 +72,7 @@ class Project
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -84,7 +95,7 @@ class Project
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -107,7 +118,7 @@ class Project
     /**
      * Get endAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndAt()
     {
@@ -130,10 +141,28 @@ class Project
     /**
      * Get isInternal
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsInternal()
     {
         return $this->isInternal;
+    }
+
+    /**
+     * @return ArrayCollection|Employee[]
+     */
+    public function getEmployees()
+    {
+        return $this->employees;
+    }
+
+    /**
+     * @param ArrayCollection|Employee[] $employees
+     * @return $this
+     */
+    public function setEmployees(ArrayCollection $employees)
+    {
+        $this->employees = $employees;
+        return $this;
     }
 }

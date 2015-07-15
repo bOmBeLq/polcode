@@ -34,6 +34,11 @@ class Employee
      */
     private $am;
 
+    /**
+     * @var Project
+     */
+    private $project;
+
 
     /**
      * Get id
@@ -129,6 +134,24 @@ class Employee
     public function setAm(AM $am)
     {
         $this->am = $am;
+        return $this;
+    }
+
+    /**
+     * @return Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * @param Project $project
+     * @return $this
+     */
+    public function setProject(Project $project)
+    {
+        $this->project = $project;
         return $this;
     }
 }

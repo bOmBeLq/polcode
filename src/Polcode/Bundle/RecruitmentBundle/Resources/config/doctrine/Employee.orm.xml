@@ -9,5 +9,6 @@
         <field name="lastName" type="string" column="lastName" length="255"/>
         <field name="email" type="string" column="email" length="50"/>
         <many-to-one target-entity="Polcode\Bundle\RecruitmentBundle\Entity\AM" inversed-by="employees" field="am"/>
+        <many-to-one target-entity="Polcode\Bundle\RecruitmentBundle\Entity\Project" inversed-by="employees" field="project"/>
     </entity>
 </doctrine-mapping>
