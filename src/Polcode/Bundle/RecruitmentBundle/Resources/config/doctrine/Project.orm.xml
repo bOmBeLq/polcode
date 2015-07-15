@@ -9,8 +9,8 @@
         <field name="createdAt" type="datetime" column="createdAt"/>
         <field name="endAt" type="datetime" column="endAt" nullable="true"/>
         <field name="isInternal" type="boolean" column="is_internal"/>
-        <one-to-many target-entity="Polcode\Bundle\RecruitmentBundle\Entity\Employee" mapped-by="projects" field="employees"/>
-        <many-to-many target-entity="Polcode\Bundle\RecruitmentBundle\Entity\AM" inversed-by="projects" field="am"/>
+        <many-to-many target-entity="Polcode\Bundle\RecruitmentBundle\Entity\Employee" inversed-by="projects" field="employees"/>
+        <many-to-one target-entity="Polcode\Bundle\RecruitmentBundle\Entity\AM" inversed-by="projects" field="am"/>
 
     </entity>
 </doctrine-mapping>
