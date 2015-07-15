@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProjectAdmin extends Admin
 {
@@ -20,8 +22,8 @@ class ProjectAdmin extends Admin
             ->add('isInternal')
             ->add('createdAt')
             ->add('endAt')
-            ->add('id')
-        ;
+            ->add('am')
+            ->add('id');
     }
 
     /**
@@ -34,14 +36,14 @@ class ProjectAdmin extends Admin
             ->add('isInternal')
             ->add('createdAt')
             ->add('endAt')
+            ->add('am')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ))
-        ;
+            ));
     }
 
     /**
@@ -52,9 +54,9 @@ class ProjectAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('isInternal')
-            ->add('createdAt')
+            ->add('createdAt', null, ['data' => new \DateTime()])// we could define current date in entity constructor but let's keep the entities as simple as possible
             ->add('endAt')
-        ;
+            ->add('am');
     }
 
     /**
@@ -67,6 +69,15 @@ class ProjectAdmin extends Admin
             ->add('isInternal')
             ->add('createdAt')
             ->add('endAt')
-        ;
+            ->add('am');
     }
+
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        $errorElement
+            ->with('name')->addConstraint(new NotBlank())->end()
+            ->with('createdAt')->addConstraint(new NotBlank())->end();
+    }
+
+
 }
