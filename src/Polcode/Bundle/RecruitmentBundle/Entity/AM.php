@@ -137,4 +137,11 @@ class AM
         $this->employees = $employees;
         return $this;
     }
+
+    function __toString()
+    {
+       return $this->getFirstName().' '.$this->getLastName().' ('.$this->getEmail().')';
+    }
+
+
 }

@@ -7,6 +7,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Validator\ErrorElement;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class EmployeeAdmin extends Admin
 {
@@ -18,8 +21,7 @@ class EmployeeAdmin extends Admin
         $datagridMapper
             ->add('firstName')
             ->add('lastName')
-            ->add('email')
-        ;
+            ->add('email');
     }
 
     /**
@@ -31,14 +33,14 @@ class EmployeeAdmin extends Admin
             ->add('firstName')
             ->add('lastName')
             ->add('email')
+            ->add('am')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
                 )
-            ))
-        ;
+            ));
     }
 
     /**
@@ -50,7 +52,7 @@ class EmployeeAdmin extends Admin
             ->add('firstName')
             ->add('lastName')
             ->add('email')
-        ;
+            ->add('am');
     }
 
     /**
@@ -62,6 +64,17 @@ class EmployeeAdmin extends Admin
             ->add('firstName')
             ->add('lastName')
             ->add('email')
-        ;
+            ->add('am');
     }
+
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        $errorElement
+            ->with('firstName')->addConstraint(new NotBlank())->end()
+            ->with('lastName')->addConstraint(new NotBlank())->end()
+            ->with('email')->addConstraint(new NotBlank())->addConstraint(new Email())->end()
+            ->with('am')->addConstraint(new NotBlank());
+    }
+
+
 }
