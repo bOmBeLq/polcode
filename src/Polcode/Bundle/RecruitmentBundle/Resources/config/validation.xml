@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Polcode\Bundle\RecruitmentBundle\Entity\Employee">
+        <property name="firstName">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="lastName">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="email">
+            <constraint name="NotBlank" />
+            <constraint name="Email" />
+        </property>
+    </class>
+    <class name="Polcode\Bundle\RecruitmentBundle\Entity\AM">
+        <property name="firstName">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="lastName">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="email">
+            <constraint name="NotBlank" />
+            <constraint name="Email" />
+        </property>
+    </class>
+    <class name="Polcode\Bundle\RecruitmentBundle\Entity\Project">
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="createdAt">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="isInternal">
+            <constraint name="NotNull" />
+        </property>
+    </class>
+</constraint-mapping>

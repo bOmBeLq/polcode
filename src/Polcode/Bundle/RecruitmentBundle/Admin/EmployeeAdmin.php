@@ -100,14 +100,4 @@ class EmployeeAdmin extends Admin
             ->add('am')
             ->add('projects');
     }
-
-    public function validate(ErrorElement $errorElement, $object)
-    {
-        $errorElement
-            ->with('firstName')->addConstraint(new NotBlank())->end()
-            ->with('lastName')->addConstraint(new NotBlank())->end()
-            ->with('email')->addConstraint(new NotBlank())->addConstraint(new Email())->end()
-            ->with('am')->addConstraint(new NotBlank())->end()
-            ->with('projects')->addConstraint(new Count(['min' => 1]))->end();
-    }
 }

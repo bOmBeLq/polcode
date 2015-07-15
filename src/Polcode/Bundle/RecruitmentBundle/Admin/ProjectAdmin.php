@@ -71,13 +71,4 @@ class ProjectAdmin extends Admin
             ->add('endAt')
             ->add('am');
     }
-
-    public function validate(ErrorElement $errorElement, $object)
-    {
-        $errorElement
-            ->with('name')->addConstraint(new NotBlank())->end()
-            ->with('createdAt')->addConstraint(new NotBlank())->end();
-    }
-
-
 }

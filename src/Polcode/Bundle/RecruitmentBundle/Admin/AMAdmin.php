@@ -63,14 +63,4 @@ class AMAdmin extends Admin
             ->add('lastName')
             ->add('email');
     }
-
-    public function validate(ErrorElement $errorElement, $object)
-    {
-        $errorElement
-            ->with('firstName')->addConstraint(new NotBlank())->end()
-            ->with('lastName')->addConstraint(new NotBlank())->end()
-            ->with('email')->addConstraint(new NotBlank())->addConstraint(new Email())->end();
-    }
-
-
 }

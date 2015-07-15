@@ -160,4 +160,14 @@ class Employee
         $this->projects = $projects;
         return $this;
     }
+
+    /**
+     * @param Project $project
+     * @return $this
+     */
+    public function addProject(Project $project)
+    {
+        $this->getProjects()->add($project);
+        return $this;
+    }
 }
