@@ -29,11 +29,16 @@ class Employee
      */
     private $email;
 
+    /**
+     * @var AM
+     */
+    private $am;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,7 +61,7 @@ class Employee
     /**
      * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -79,7 +84,7 @@ class Employee
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -102,10 +107,28 @@ class Employee
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * @return AM
+     */
+    public function getAm()
+    {
+        return $this->am;
+    }
+
+    /**
+     * @param AM $am
+     * @return $this
+     */
+    public function setAm(AM $am)
+    {
+        $this->am = $am;
+        return $this;
     }
 }

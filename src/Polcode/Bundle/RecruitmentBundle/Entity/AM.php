@@ -2,6 +2,7 @@
 
 namespace Polcode\Bundle\RecruitmentBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,11 +30,21 @@ class AM
      */
     private $email;
 
+    /**
+     * @var ArrayCollection|Employee[]
+     */
+    private $employees;
+
+    public function __construct()
+    {
+        $this->employees = new ArrayCollection();
+    }
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,7 +67,7 @@ class AM
     /**
      * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -79,7 +90,7 @@ class AM
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -102,10 +113,28 @@ class AM
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * @return ArrayCollection|Employee[]
+     */
+    public function getEmployees()
+    {
+        return $this->employees;
+    }
+
+    /**
+     * @param ArrayCollection|Employee[] $employees
+     * @return $this
+     */
+    public function setEmployees(ArrayCollection $employees)
+    {
+        $this->employees = $employees;
+        return $this;
     }
 }
