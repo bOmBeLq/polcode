@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_name: polcode_recruitment
+    database_user: root
+    database_password: polcode
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: ThisTokenIsNotSoSecretChangeIt
+    sonata_admin.title: Recruitment
+    sonata_admin.logo_title: /polcode-logo.png
+    sonata_media.cdn.host: /uploads/media
+    sonata_user.google_authenticator.server: auth.polcode.pl

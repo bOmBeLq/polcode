@@ -1,0 +1,44 @@
+sonata_block:
+    default_contexts: [cms]
+
+    http_cache:
+        listener: true
+
+    menus:
+        "SonataDemoBundle:Builder:mainMenu": "Main Menu"
+
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.admin.block.search_result:
+            contexts:   [admin]
+
+        #sonata.admin_doctrine_orm.block.audit:
+        #    contexts:   [admin]
+
+        # Builtin Block
+        sonata.block.service.text:
+        sonata.block.service.container:
+        sonata.block.service.rss:
+        sonata.block.service.menu:
+        sonata.block.service.template:
+
+        # MediaBundle's Blocks
+        sonata.media.block.media:
+        sonata.media.block.gallery:
+        sonata.media.block.feature_media:
+        
+
+        # UserBundle's Blocks
+        sonata.user.block.account:
+            cache: sonata.page.cache.js_async
+            #cache: sonata.page.cache.esi
+            contexts: [user]
+        sonata.user.block.menu:
+            contexts: [user]
+
+
+        # Formatter
+        sonata.formatter.block.formatter:
+
+        sonata.seo.block.breadcrumb.homepage:

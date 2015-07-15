@@ -1,0 +1,72 @@
+#
+# more information can be found here http://sonata-project.org/bundles/admin
+#
+sonata_admin:
+    # default value, change it to sonata.admin.security.handler.acl to use ACL
+    security:
+        handler: sonata.admin.security.handler.role
+
+    title:      %sonata_admin.title%
+    title_logo: %sonata_admin.logo_title%
+    options:
+        html5_validate: false # does not use html5 validation
+        pager_links: 5 # pager max links to display
+
+    templates:
+        # default global templates
+        # the layout template include javascript/stylesheet to the formatter bundle,
+        # if you don't need it use the default one: SonataAdminBundle::standard_layout.html.twig
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        # default value if done set, actions templates, should extends a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+
+    dashboard:
+        blocks:
+            - { position: left, type: sonata.block.service.template, settings: { template: "PolcodeRecruitmentBundle:Block:welcome.html.twig" } }
+            
+
+        groups:
+            sonata.admin.group.content:
+                label:           sonata_content
+                label_catalogue: SonataAdminBundle
+                icon:            '<i class="fa fa-th"></i>'
+                items:
+                    - sonata.media.admin.media
+                    - sonata.media.admin.gallery
+            sonata.admin.group.administration:
+                label:           sonata_administration
+                label_catalogue: SonataAdminBundle
+                icon:            '<i class="fa fa-cogs"></i>'
+                items:
+                    - sonata.user.admin.user
+                    - sonata.user.admin.group
+                    - sonata.notification.admin.message
+            polcode.admin.group.recruitment:
+                label:           polcode_recruitment
+                label_catalogue: PolcodeRecruitmentBundle
+                icon:            '<i class="fa fa-users"></i>'
+                items:
+                    - polcode.recruitment.admin.employee
+                    - polcode.recruitment.admin.am
+                    - polcode.recruitment.admin.project
+
+    assets:
+        stylesheets:
+            # The sandbox includes default pre-optimized version of some css and js
+            # So you can either use them, and add your custom assets here
+            #   ~ or ~
+            # tweak the assetic.yml and the following lines
+            - assetic/sonata_admin_css.css
+            - assetic/sonata_formatter_css.css
+            - assetic/sonata_jqueryui_css.css
+
+
+        javascripts:
+            - assetic/sonata_admin_js.js
+            - assetic/sonata_jqueryui_js.js
+            - assetic/sonata_formatter_js.js
+            - bundles/sonataformatter/vendor/ckeditor/ckeditor.js
