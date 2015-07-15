@@ -11,8 +11,8 @@ use Liip\FunctionalTestBundle\Test\WebTestCase;
  * Class EmployeeTest
  * @package Polcode\Bundle\RecruitmentBundle\Tests\Validator
  */
-class EmployeeTest extends WebTestCase {
-
+class EmployeeTest extends WebTestCase
+{
     public function testEmptyAll()
     {
         $entity = new Employee();
@@ -36,7 +36,6 @@ class EmployeeTest extends WebTestCase {
 
         $errors = $validator->validate($entity);
         $this->assertEquals(1, count($errors));
-
     }
 
     public function testEmptyLastnameName()
@@ -52,7 +51,6 @@ class EmployeeTest extends WebTestCase {
 
         $errors = $validator->validate($entity);
         $this->assertEquals(1, count($errors));
-
     }
 
     public function testEmptyEmail()
@@ -68,7 +66,6 @@ class EmployeeTest extends WebTestCase {
 
         $errors = $validator->validate($entity);
         $this->assertEquals(1, count($errors));
-
     }
 
     public function testValidEmail()
@@ -85,7 +82,6 @@ class EmployeeTest extends WebTestCase {
 
         $errors = $validator->validate($entity);
         $this->assertEquals(0, count($errors));
-
     }
 
     public function testWrongEmail()
@@ -96,14 +92,29 @@ class EmployeeTest extends WebTestCase {
                ->setFirstName('Firstname')
                ->setEmail('email')
                ->addProject(new Project())
-               ->setAm(new AM());;
+               ->setAm(new AM());
+        ;
 
         $validator = $this->getContainer()->get('validator');
 
         $errors = $validator->validate($entity);
         $this->assertEquals(1, count($errors));
-
     }
 
 
+
+    public function testNoProjects()
+    {
+        $entity = new Employee();
+
+        $entity->setLastName('Lastname')
+            ->setFirstName('Firstname')
+            ->setEmail('email@polcode.net')
+            ->setAm(new AM());
+
+        $validator = $this->getContainer()->get('validator');
+
+        $errors = $validator->validate($entity);
+        $this->assertEquals(1, count($errors));
+    }
 }

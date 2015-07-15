@@ -5,37 +5,42 @@
 
     <class name="Polcode\Bundle\RecruitmentBundle\Entity\Employee">
         <property name="firstName">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank"/>
         </property>
         <property name="lastName">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank"/>
         </property>
         <property name="email">
-            <constraint name="NotBlank" />
-            <constraint name="Email" />
+            <constraint name="NotBlank"/>
+            <constraint name="Email"/>
+        </property>
+        <property name="projects">
+            <constraint name="Count">
+                <option name="min">1</option>
+            </constraint>
         </property>
     </class>
     <class name="Polcode\Bundle\RecruitmentBundle\Entity\AM">
         <property name="firstName">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank"/>
         </property>
         <property name="lastName">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank"/>
         </property>
         <property name="email">
-            <constraint name="NotBlank" />
-            <constraint name="Email" />
+            <constraint name="NotBlank"/>
+            <constraint name="Email"/>
         </property>
     </class>
     <class name="Polcode\Bundle\RecruitmentBundle\Entity\Project">
         <property name="name">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank"/>
         </property>
         <property name="createdAt">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank"/>
         </property>
         <property name="isInternal">
-            <constraint name="NotNull" />
+            <constraint name="NotNull"/>
         </property>
     </class>
 </constraint-mapping>
